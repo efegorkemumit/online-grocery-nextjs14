@@ -2,8 +2,9 @@ import { LayoutGrid, Search, ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { Input } from './ui/input'
-import { Button } from './ui/button'
+import { Button } from '../ui/button'
+import CategoryButton from './CategoryButton'
+
 
 const Navbar = () => {
   return (
@@ -21,11 +22,7 @@ const Navbar = () => {
             
             </Link>
 
-            <h2 className='hidden md:flex gap-2 items-center border rounded-full p-2 px-10 bg-slate-200
-            cursor-pointer'>
-
-                <LayoutGrid className='h-5 w-5'/> Category
-            </h2>
+          <CategoryButton/>
 
             <div className='md:flex hidden gap-2 items-center border rounded-full p-2 px-5'>
                 <Search className='h-5 w-5'/>
