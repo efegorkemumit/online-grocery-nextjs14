@@ -49,14 +49,14 @@ const ProductItem = ({product}:ProductItemProps) => {
         </div>
 
         <Dialog>
-                <DialogTrigger>
+                <DialogTrigger asChild>
                     <Button variant="outline"
                      className='bg-green-600 text-white'>
                         Add To Cart
                     </Button>
                 </DialogTrigger>
 
-                <DialogContent>
+                <DialogContent className="sm:max-w-[725px]">
                 <DialogHeader>
                     <DialogDescription>
                         <ProductItemDetail
