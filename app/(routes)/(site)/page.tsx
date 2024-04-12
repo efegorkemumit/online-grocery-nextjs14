@@ -18,6 +18,17 @@ export default async function Home() {
       <Slider sliderList={sliderlist}/>
       <Categories categoryList={categoriesList}/>
       <ProductList productList={productList}/>
+
+      <Image 
+      src="/delivery.png" 
+      width={1000}
+      height={300}
+      alt="delivery"
+      className="w-full object-contain mt-10"
+      
+      />
+
+    
     </div>
   );
 }
