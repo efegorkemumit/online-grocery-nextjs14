@@ -42,7 +42,12 @@ const Navbar = () => {
                 <span className='bg-green-600 text-white px-2 rounded-full'>2</span>
             </h2>
 
+        <Link href="/sign-in">
+        
+        
             <Button className='bg-green-600'>Login</Button>
+
+            </Link>
 
 
         </div>
