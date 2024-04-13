@@ -14,7 +14,7 @@ const Categories = ({categoryList}:CategoriesProps) => {
         <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-8 mt-2'>
             {categoryList.map((category, index)=>(
                 <Link
-                href={'/product-category/'+category.name}
+                href={'/product-category/'+category.attributes.name}
                 key={index}
                 className='flex flex-col
                 rounded-xl gap-2
