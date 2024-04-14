@@ -1,6 +1,10 @@
 'use client'
+import registerUser from '@/actions/register'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { useToast } from '@/components/ui/use-toast'
+import useAuthStore from '@/hooks/useAuthStore'
+import { startSession } from '@/lib/session'
 import { Loader2Icon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -9,12 +13,40 @@ import React, { useState } from 'react'
 
 
 const CreateUserpage = () => {
-  const [email, setEmail] = useState();
-  const [username, setUsername] = useState();
+  const { email, username, password, loader, setEmail, setUsername, setPassword, setLoader } = useAuthStore();
 
-  const [password, setPassword] = useState();
   const router = useRouter();
-  const [loader, setLoader] = useState();
+  const { toast } = useToast()
+
+
+  const onSignup=()=>{
+
+    setLoader(true);
+    registerUser(username, email, password).then(
+      (resp)=>{
+        startSession(resp.user, resp.jwt);
+        toast({
+          variant: "success",
+          description: "Account Created Successfull.",
+        })
+       
+        setLoader(false);
+        router.push('/')
+
+      },
+      (error)=>{
+        setLoader(false);
+        toast({
+          variant: "destructive",
+          description: "Something went wrong",
+        })
+
+      }
+    ).finally(()=>{
+      setLoader(false);
+    })
+
+  }
   return (
     <div className='flex items-baseline justify-center my-20'>
 
@@ -42,7 +74,9 @@ const CreateUserpage = () => {
           onChange={(e)=>setPassword(e.target.value)}
           />
           <Button
-          disabled={!(email && password)}>
+          disabled={!(email && password)}
+          onClick={onSignup}
+          >
             {loader?<Loader2Icon className='animate-spin'/> : 'Sign in'}
 
             

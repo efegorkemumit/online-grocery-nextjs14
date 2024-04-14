@@ -1,12 +1,37 @@
-import { LayoutGrid, Search, ShoppingCart } from 'lucide-react'
+'use client'
+
+import { CircleUserRound, LayoutGrid, Search, ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from '../ui/button'
 import CategoryButton from './CategoryButton'
-
+import {
+    DropdownMenu,
+    DropdownMenuCheckboxItem,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+  } from "@/components/ui/dropdown-menu"
 
 const Navbar = () => {
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    useEffect(()=>{
+        const jwt = localStorage.getItem("jwt");
+        setIsLoggedIn(!!jwt)
+    })
+
+    const onSignout = ()=>{
+        localStorage.removeItem('jwt');
+        localStorage.removeItem('user');
+
+        setIsLoggedIn(false)
+
+  }
   return (
     <div className='p-5 shadow-sm flex justify-between'>
         <div className='flex items-center gap-8'>
@@ -42,13 +67,48 @@ const Navbar = () => {
                 <span className='bg-green-600 text-white px-2 rounded-full'>2</span>
             </h2>
 
+           
+    {isLoggedIn ?(
+         <DropdownMenu>
+         <DropdownMenuTrigger asChild>
+             <CircleUserRound
+             className='bg-green-200 rounded-full h-12 w-12 text-green-900'
+             
+             />
+
+         </DropdownMenuTrigger>
+         <DropdownMenuContent>
+             <DropdownMenuLabel>My Account</DropdownMenuLabel>
+             <DropdownMenuSeparator/>
+
+             <DropdownMenuItem>Profile</DropdownMenuItem>
+
+             <Link href={'/my-order'}>
+             <DropdownMenuItem>My Order</DropdownMenuItem>
+             </Link>
+             <DropdownMenuItem onClick={onSignout}>Logout</DropdownMenuItem>
+             
+
+
+         </DropdownMenuContent>
+
+     </DropdownMenu>
+
+
+    ):(
         <Link href="/sign-in">
-        
-        
-            <Button className='bg-green-600'>Login</Button>
+        <Button className='bg-green-600'>Login</Button>
+   </Link>
 
-            </Link>
 
+    )
+
+}
+           
+
+
+
+          
 
         </div>
 
