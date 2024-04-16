@@ -15,10 +15,28 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
+import Cart from './Cart'
 
 const Navbar = () => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    let jwt =""; 
+    let user = '';
+    let userId = '';
+
+    try {
+        jwt = localStorage.getItem("jwt");
+        user = localStorage.getItem('user');
+        if (user) {
+            const userObj = JSON.parse(user);
+            userId = userObj.id;
+        }
+    } catch (e) {
+        console.error('Error:', e);
+    }
+
+
 
     useEffect(()=>{
         const jwt = localStorage.getItem("jwt");
@@ -62,11 +80,21 @@ const Navbar = () => {
         </div>
 
         <div className='flex gap-5 items-center'>
-            <h2 className='flex gap-2 items-center text-lg'>
+            {isLoggedIn ?(
+               <Cart jwt={jwt} userId={userId}/>
+            ):(
+                <Link href="/sign-in">
+                <h2 className='flex gap-2 items-center text-lg'>
                 <ShoppingCart className='h-7 w-7'/>
-                <span className='bg-green-600 text-white px-2 rounded-full'>2</span>
+                <span className='bg-green-600 text-white px-2 rounded-full'>0</span>
             </h2>
+            </Link>
 
+            )}
+
+
+
+           
            
     {isLoggedIn ?(
          <DropdownMenu>

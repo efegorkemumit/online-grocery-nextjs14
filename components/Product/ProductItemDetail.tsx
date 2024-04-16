@@ -5,7 +5,8 @@ import Image from 'next/image'
 import React, { MouseEventHandler, useState } from 'react'
 import { Button } from '../ui/button'
 import { LoaderCircle, ShoppingBasket } from 'lucide-react'
-import useCart from '@/hooks/use-cart'
+import useStore from '@/hooks/useStore'
+import { AddtoCart } from '@/actions/cart/AddtoCart'
 
 interface ProductItemDetailProps{
 
@@ -17,6 +18,27 @@ const ProductItemDetail = ({product}:ProductItemDetailProps) => {
 
     const [quantity,setQuantity]=useState(1);
     const [loading,setLoading]=useState(false);
+
+    let jwt =""; 
+    let user = '';
+    let userId = '';
+
+    try {
+        jwt = localStorage.getItem("jwt");
+        user = localStorage.getItem('user');
+        if(user){
+            const userObj = JSON.parse(user);
+            userId= userObj.id;
+        }
+        
+    } catch (error) {
+        console.error("error", error)
+        
+    }
+
+    
+
+
     const [productTotalPrice,setProductTotalPrice]=useState(
         product.attributes.sellingPrice?
         product.attributes.sellingPrice:
@@ -24,36 +46,61 @@ const ProductItemDetail = ({product}:ProductItemDetailProps) => {
     )
 
     const incrementQuantity = () => {
-        setQuantity(quantity + 1); // Adet sayısını artır
+        setQuantity(quantity + 1);
     };
     
     // Azaltma işlevi
     const decrementQuantity = () => {
         if (quantity > 1) {
-            setQuantity(quantity - 1); // Adet sayısını azalt (minimum 1 olacak şekilde)
+            setQuantity(quantity - 1); 
         }
     };
 
-    const cart = useCart();
-    const [totalPrice, setTotalPrice] = useState(0); // Toplam fiyatı state olarak sakla ve setter fonksiyonunu al
+    const [totalPrice, setTotalPrice] = useState(0); 
+
+    const  addItem = useStore((state)=>state.addItem);
+    const  fetchItems = useStore((state)=>state.fetchItems);
 
 
-
-    const onAddCart: MouseEventHandler<HTMLButtonElement>=(event)=>{
+    const onAddCart: MouseEventHandler<HTMLButtonElement>= async(event)=>{
         event.stopPropagation();
 
-        setLoading(true);
-
-        const productToAdd = { ...product, quantity }; // Ürünü sepete eklerken mevcut adet miktarını kullan
-        cart.addItem(productToAdd, quantity, quantity*productTotalPrice); // Ürün miktarını da eklemeye geçir
-    
-        // Toplam fiyatı güncelle
-        const totalPrice = parseFloat(productToAdd.sellingPrice) * quantity;
-        setTotalPrice((prevTotalPrice) => prevTotalPrice + totalPrice);
+       
 
 
+        try {
+            setLoading(true);
 
-        setLoading(false);
+            const data = {
+
+                data: {
+                    quantity: quantity,
+                    amount: (quantity * productTotalPrice).toFixed(2),
+                    products: product.id,
+                    users_permissions_user: userId,
+                    userId: userId
+                }
+
+            };
+
+            await AddtoCart(data, jwt)
+            addItem({data});
+            fetchItems(userId,jwt)
+
+            
+        } catch (error) {
+
+            console.log("error", error)
+            
+        }
+        finally{
+            setLoading(false);
+
+        }
+
+      
+
+
 
 
 
