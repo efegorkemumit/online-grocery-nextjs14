@@ -30,7 +30,7 @@ export const getToCart = async(userId:any, jwt:any)=>{
         
     } catch (error) {
 
-        console.log("error" , error.response.data)
+        console.log("error")
         throw error;
         
     }
