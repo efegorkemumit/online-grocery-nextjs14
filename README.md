@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<a href="" rel="nofollow">
+<img src="https://github.com/efegorkemumit/online-grocery-nextjs14/blob/master/public/market.jpg"
+ style="max-width: 100%;">
+</a>
 
-## Getting Started
+<div></div>
 
-First, run the development server:
+<a href="https://www.instagram.com/efegorkemumit/" rel="nofollow">
+<img src="https://efegorkemumit.github.io/assets/img/iconss/instagram.png" style="max-width: 10%;">
+</a>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<a href="https://efegorkemumit.com/" rel="nofollow">
+<img src="https://efegorkemumit.github.io/assets/img/iconss/website.png" style="max-width: 10%;">
+</a>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<a href="https://github.com/efegorkemumit" rel="nofollow">
+<img src="https://efegorkemumit.github.io/assets/img/iconss/github.png" style="max-width: 10%;">
+</a>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<a href="https://www.linkedin.com/in/efe-g%C3%B6rkem-%C3%BCmit-a084009b/" rel="nofollow">
+<img src="https://efegorkemumit.github.io/assets/img/iconss/linkedin.png" style="max-width: 10%;">
+</a>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<a href="https://www.youtube.com/@EfeGorkemUmit?sub_confirmation=1" rel="nofollow">
+<img src="https://efegorkemumit.github.io/assets/img/iconss/youtube.png" style="max-width: 10%;">
+</a>
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+<div style="height:25px">
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## LINKS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+- Video Tutorial : Yakında
+- Store Github: https://github.com/efegorkemumit/online-grocery-nextjs14
+- Cms Github: https://github.com/efegorkemumit/cms-grocery-online
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Online Bakkal ve Market Sitesi |  E-Ticaret Sitesi | Full Stack | Strapi, NextJS, TailwindCSS, Shdnc
+
+## Video
+
+**Timestamps**
+- 00:00 Tanıtım
+- 05:28 Kurulumlar
+- 14:35 Header
+- 25:36 Strapi Kurulum
+- 40:13 Category Api den Veri Çekme
+- 01:00:29 Slider
+- 01:15:11 Anasayfa Category
+- 01:25:20 Product Model
+- 01:28:13 Product List
+- 01:48:22 Product Add to Cart Modal 
+- 02:16:06 Footer 
+- 02:27:51 Category Detail
+- 02:40:49 Login Register Page UI
+- 02:56:29 Login Register Page Action
+- 03:31:11 Sepet İşlemleri
+- 04:25:02 Checkout UI and collection
+- 04:49:48 Checkout Submit
+- 05:04:10 My Order ve Bitiş
+
+
+
+
